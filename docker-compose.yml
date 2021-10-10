@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+  card:
+    image: card_service:v0.1
+    build: 
+      context: ./cards_service
+      dockerfile: Dockerfile
+
+    ports:
+      - 5082:8082
+  
+  user:
+    image: user_service:v0.1
+    build: 
+      context: ./users_service
+      dockerfile: Dockerfile
+
+    ports:
+      - 5085:8085
+
+  order:
+    image: order_service:v0.1
+    build: 
+      context: ./order_service
+      dockerfile: Dockerfile
+
+    ports:
+      - 5083:8083
+
+  gateway:
+    image: gw_service:v0.1
+    build: 
+      context: ./gw_service
+      dockerfile: Dockerfile
+
+    ports:
+      - 5080:8080
+  
+  auth:
+    image: auth:v0.1
+    build: 
+      context: ./auth_service
+      dockerfile: Dockerfile
+
+    ports:
+      - 5089:8089
+
+  client:
+    image: client:v1.0
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+
+    ports:
+      - 7777:8082
+
+  

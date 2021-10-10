@@ -1,0 +1,2 @@
+class NoCardException(Exception):
+    pass
