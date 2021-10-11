@@ -24,6 +24,7 @@ jobs:
         run: |
           cd gw_service
           python -m unittest test/test_*.py
+          cd ..
 
       - name: Run Tests card service  
         run: |
