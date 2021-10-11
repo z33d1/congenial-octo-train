@@ -20,7 +20,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r gw_service/requirements.txt
-      - name: Run Tests    
+      - name: Run Tests gateway service  
         run: |
           cd gw_service
+          python -m unittest test/test_*.py
+
+      - name: Run Tests card service  
+        run: |
+          cd card_service
           python -m unittest test/test_*.py
