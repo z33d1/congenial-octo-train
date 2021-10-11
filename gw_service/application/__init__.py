@@ -13,7 +13,7 @@ from logging.handlers import RotatingFileHandler
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-    app.config['GW-SECRET'] = 'GATEWAY-SECRET'
+    app.config['GW-SECRET'] = ''
     app.config['CARD'] = ''
     app.config['USERS'] = ''
     app.config['ORDER'] = ''

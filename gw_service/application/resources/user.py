@@ -12,11 +12,6 @@ class User(Resource):
         super(User, self).__init__()
 
     def get(self, user_id=None):
-        """
-        Method to process get responses for server resources
-        :param server_id: id of server
-        :return: (response data in json, response status code)
-        """
 
         current_app.logger.info("GET: {}".format(request.full_path))
 

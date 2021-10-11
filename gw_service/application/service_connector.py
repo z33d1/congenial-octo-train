@@ -11,7 +11,8 @@ class ServiceConnector(object):
     def __init__(self, base_url, service_name=''):
         self.base_url = base_url
         self.service_name = service_name
-
+        self.session = requests.Session()
+        
     def _update_token(self):
 
         secret = b64encode(current_app.config['GW-SECRET'].encode()).decode()
@@ -47,10 +48,9 @@ class ServiceConnector(object):
         :return: (response code, response data in json)
         """
 
-        headers = self._make_headers(with_token)
+        headers = self._make_headers(with_token=False)
         try:
-            # r = requests.get(self.base_url + url)
-            r = requests.get(self.base_url + url, headers=headers)
+            r = self.session.get(self.base_url + url, headers=headers)
         except requests.exceptions.ConnectionError:
             return 503, {'message': f'Service {self.service_name} is not available'}
 

@@ -8,17 +8,6 @@ class OrderConnector(ServiceConnector):
     """
     Class to connect with Orders Service
     """
-    # def get_servers_with_pag(self, page, size):
-    #     """
-    #     Method to get info about servers using pagination
-    #     :param page: page number
-    #     :param size: count elements per page
-    #     :return: (response code, response data in json)
-    #     """
-
-    #     url = "/server?page={}&size={}".format(page, size)
-    #     return self.send_get_request(url, with_token=True)
-
     def get_orders(self):
         """
         Method to get info about all orders

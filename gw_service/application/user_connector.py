@@ -7,7 +7,7 @@ class UsersNotAvailableException(Exception):
 
 class UserConnector(ServiceConnector):
     """
-    Class to connect with Usersclea Service
+    Class to connect with Users Service
     """
     def get_user_by_id(self, user_id):
         """
