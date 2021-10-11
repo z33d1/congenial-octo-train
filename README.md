@@ -1,6 +1,5 @@
-## RSOI lab 2 Miroservices
-Users - const  
-Cards - const
+## Ticket system
+
 
 [![Build Status](https://travis-ci.com/bmstu-rsoi/lab2-microservices-zeed951.svg?branch=dev)](https://travis-ci.com/bmstu-rsoi/lab2-microservices-zeed951)
 
@@ -18,3 +17,8 @@ root URI = `http://localhost:8080`
 | /user/{user_id}/order/{order_id}| DELETE | Delete order by id for user | - | user_id order_id | 204, 404 |
 | /user/{user_id}/order/{order_id}| GET | Get order by id for user | - | user_id order_id | 200, 404 |
 
+
+# HOW TO
+```bash
+docker compose up --build
+```
