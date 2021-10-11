@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     getUsers() {
-      const path = 'http://localhost:8080/card/'+ this.card_id + '/user';
+      const path = process.env.VUE_APP_GW_URL + '/card/'+ this.card_id + '/user';
       axios.get(path)
         .then((res) => {
           this.users = res.data.users_for_this_card;
@@ -65,7 +65,7 @@ export default {
     },
    
     removeCard(cardID) {
-      const path = `http://localhost:8080/card/${cardID}`;
+      const path = process.env.VUE_APP_GW_URL + `/card/${cardID}`;
       axios.delete(path)
         .then(() => {
           this.getCards();

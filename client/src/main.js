@@ -6,11 +6,13 @@ import router from './router';
 
 Vue.use(BootstrapVue);
 
+
 // register jw pagination component globally
 import JwPagination from 'jw-vue-pagination';
 Vue.component('jw-pagination', JwPagination);
 
 Vue.config.productionTip = false;
+Vue.config.devtools = true;
 
 new Vue({
   router,

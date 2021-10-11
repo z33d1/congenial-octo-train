@@ -5,13 +5,14 @@ import Users from './components/Users.vue';
 import Orders from './components/Orders.vue';
 import CardUsers from './components/CardUsers.vue';
 import Auth from './components/Auth.vue';
+import HelloWorld from './components/HelloWorld.vue';
 
 
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
+  // base: process.env.BASE_URL,
   routes: [
     {
       path: '/auth',
@@ -24,21 +25,25 @@ export default new Router({
       component: Cards,
     },
     {
-      path: '/users',
-      name: 'Users',
+      path: '/user',
+      name: 'User',
       component: Users,
     },
     {
-      path: '/users/:user_id/orders',
+      path: '/user/:user_id/order',
       name: 'Orders',
       component: Orders,
       props: true,
     },
     {
-      path: '/cards/:card_id/users',
+      path: '/card/:card_id/user',
       name: 'CardUsers',
       component: CardUsers,
       props: true,
     },
+    {
+      path: '/hw',
+      component: HelloWorld
+    }
   ],
 });

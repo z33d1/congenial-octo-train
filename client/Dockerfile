@@ -1,18 +1,15 @@
-# base image
 FROM node:lts-alpine
 
-# устанавливаем простой HTTP-сервер для статики
-RUN npm install -g http-server
-# set working directory
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json ./
 
-# install and cache app dependencies
-COPY package.json /app/package.json
 RUN npm install
-RUN npm install @vue/cli@3.7.0 -g
 
-# start app
-CMD ["npm", "run", "serve"]
+COPY . .
+
+RUN npm run build
+
+EXPOSE 8080
+
+CMD [ "npm", "run", "serve" ]

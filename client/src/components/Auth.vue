@@ -38,7 +38,7 @@ export default {
 					login: this.username,
 					password: this.password,
             }
-            const path = `http://localhost:8089/auth/login`
+            const path = process.env.VUE_APP_AUTH_URL + `/auth/login`
 
             axios.post(path, formData)
                 .then((res) => {
@@ -48,8 +48,10 @@ export default {
                 const user_id = jwt_decode(localStorage.getItem('token'))['sub']
 
                 console.log("user_id = ", jwt_decode(localStorage.getItem('token'))['sub'])
-                const path = '/users/' + user_id + '/orders';
-                window.location = path                
+                const path = '/user/' + user_id + '/order';
+                this.$router.push(path);
+                // window.location = path       
+                       
                 // console.log(res.data.cards);
                 })
         }

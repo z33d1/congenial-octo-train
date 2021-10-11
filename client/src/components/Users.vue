@@ -72,7 +72,8 @@ export default {
   },
   methods: {
     getUsers() {
-      const path = 'http://localhost:8080/user';
+      const path = process.env.VUE_APP_GW_URL + '/user';
+      console.log(path)
       axios.get(path)
         .then((res) => {
           this.users = res.data.users;
@@ -85,7 +86,7 @@ export default {
         });
     },
     on_redir_to_user(user) {
-      window.location = `/users/${user.id}/orders`;      
+      this.$router.push(`/user/${user.id}/order`);      
     },
   },
   created() {

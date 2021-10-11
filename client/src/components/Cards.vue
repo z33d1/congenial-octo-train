@@ -83,7 +83,7 @@ export default {
             this.pageOfItems = pageOfItems;
     },
     getCards() {
-      const path = 'http://localhost:8080/card';
+      const path = process.env.VUE_APP_CARDS_URL + '/card';
       axios.get(path)
         .then((res) => {
           this.cards = res.data.cards;
@@ -98,7 +98,7 @@ export default {
     },
    
     removeCard(cardID) {
-      const path = `http://localhost:8080/card/${cardID}`;
+      const path = process.env.VUE_APP_CARDS_URL + `/card/${cardID}`;
       axios.delete(path)
         .then(() => {
           this.message = 'Card removed!';
@@ -119,13 +119,13 @@ export default {
 
     onUsersForCardClick(card)
     {
-      const path = '/cards/' + card.id + '/users';
-      window.location = path
+      const path = '/card/' + card.id + '/user';
+      this.$router.push(path)
     }
 },
   created() {
     this.getCards();
-    localStorage.setItem('token', "card_zhopka");
+    localStorage.setItem('token', "card_zh");
   },
 };
 </script>
