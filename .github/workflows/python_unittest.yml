@@ -28,5 +28,5 @@ jobs:
 
       - name: Run Tests card service  
         run: |
-          cd card_service
+          cd cards_service
           python -m unittest test/test_*.py
