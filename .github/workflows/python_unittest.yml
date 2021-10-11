@@ -21,4 +21,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r gw_service/requirements.txt
       - name: Run Tests    
-        run: python -m unittest gw_service/test/test_*.py
+        run: |
+          cd gw_service
+          python -m unittest test/test_*.py
