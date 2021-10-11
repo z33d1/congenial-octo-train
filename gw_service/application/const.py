@@ -1,5 +1,4 @@
-
-USER_SERVICE_ADDRESS = 'http://localhost:8085'
-CARD_SERVICE_ADDRESS = 'http://localhost:8082'
-ORDER_SERVICE_ADDRESS = 'http://localhost:8083'
-AUTH_SERVICE_ADDRESS = 'http://localhost:8089'
+USER_SERVICE_ADDRESS = 'http://user:1002'
+CARD_SERVICE_ADDRESS = 'http://card:1001'
+ORDER_SERVICE_ADDRESS = 'http://order:1003'
+AUTH_SERVICE_ADDRESS = 'http://auth:1004'
