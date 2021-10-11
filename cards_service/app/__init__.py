@@ -7,11 +7,13 @@ import datetime
 import logging
 from flask_jwt_extended import JWTManager
 from logging.handlers import RotatingFileHandler
+from flask_cors import CORS
 
 
 
 def create_app(testing_mode=False):
     app = Flask(__name__)
+    CORS(app)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cards'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config['GW-SECRET'] = 'GATEWAY-SECRET'
