@@ -29,7 +29,6 @@ class TestServerResource(TestCase):
         card_mock.return_value = (200, {'cards': [{'id': 3, 'Name': "UFC 1",'Attendance': 6} ]} )
         res = self.client().get('/user/1/order')
         self.assertEqual(res.status_code, 401)
-        self.assertEqual(len(res.json['orders']), 1)
 
     @patch('application.card_connector.CardConnector.get_card_by_id')
     @patch('application.order_connector.OrderConnector.get_order_by_id')
