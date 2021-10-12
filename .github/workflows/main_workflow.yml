@@ -46,8 +46,8 @@ jobs:
 
     - name: Build images
       run: |
-      export DOCKER_VERSION=${{ env.DOCKER_VERSION }}
-      docker-compose -f "docker-compose.yml" build
+        export DOCKER_VERSION=${{ env.DOCKER_VERSION }}
+        docker-compose -f "docker-compose.yml" build
 
     - name: Push images
       run: docker-compose push
