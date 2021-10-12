@@ -6,7 +6,29 @@ on:
     branches: [main]
 
 jobs:
-  docker:
+  on_build_actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Python 3
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r gw_service/requirements.txt
+      - name: Run Tests gateway service  
+        run: |
+          cd gw_service
+          python -m unittest test/test_*.py
+          cd ..
+
+      - name: Run Tests card service  
+        run: |
+          cd cards_service
+          python -m unittest test/test_*.py
+  docker-build-push-up:
     timeout-minutes: 10
     runs-on: ubuntu-latest
 
