@@ -30,7 +30,7 @@ jobs:
           python -m unittest test/test_*.py
   docker-build-push-up:
     needs: test
-    timeout-minutes: 10
+    timeout-minutes: 30
     runs-on: ubuntu-latest
 
     steps:
