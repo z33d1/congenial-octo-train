@@ -127,6 +127,7 @@ export default {
       };
       
       const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user/' + this.user_id + '/order';
+      console.log(path)
       axios.post(path, payload, config)
         .then((res) => {
             this.message = 'Order added!';
