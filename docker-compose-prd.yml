@@ -29,4 +29,4 @@ services:
   client:
     image: zeed951/client:dcomp
     ports:
-      - 85:80
+      - 7777:80
