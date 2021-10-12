@@ -61,9 +61,3 @@ jobs:
         key: ${{ secrets.PASSWORD }}
         port: 22
         script: whoami
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    
