@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     getUsers() {
-      const path = process.env.VUE_APP_GW_URL + '/user';
+      const path = window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user';
       console.log(path)
       axios.get(path)
         .then((res) => {
