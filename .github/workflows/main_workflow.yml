@@ -53,11 +53,11 @@ jobs:
       if: always()
       run: docker-compose -f "docker-compose.yml" down
 
-    - name: executing remote ssh commands using password
+    - name: Executing Remote SSH command using pub_key
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.PASSWORD }}
+        key: ${{ SSH_PUB_KEY }}
         port: 22
         script: whoami
