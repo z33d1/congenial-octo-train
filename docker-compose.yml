@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   card:
-    image: zeed951/card_service:dcomp
+    image: zeed951/card_service:{DOCKER_VERSION}
     build: 
       context: ./cards_service
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
     
   
   user:
-    image: zeed951/user_service:dcomp
+    image: zeed951/user_service:{DOCKER_VERSION}
     build: 
       context: ./users_service
       dockerfile: Dockerfile  
@@ -19,7 +19,7 @@ services:
       - 8082:1002
 
   order:
-    image: zeed951/order_service:dcomp
+    image: zeed951/order_service:{DOCKER_VERSION}
     build: 
       context: ./order_service
       dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
       - 8083:1003
 
   gateway:
-    image: zeed951/gw_service:dcomp
+    image: zeed951/gw_service:{DOCKER_VERSION}
     build: 
       context: ./gw_service
       dockerfile: Dockerfile   
@@ -36,7 +36,7 @@ services:
       - 8084:8080
   
   auth:
-    image: zeed951/auth:dcomp
+    image: zeed951/auth:{DOCKER_VERSION}
     build: 
       context: ./auth_service
       dockerfile: Dockerfile
@@ -45,7 +45,7 @@ services:
       - 8085:1004
 
   client:
-    image: zeed951/client:dcomp
+    image: zeed951/client:{DOCKER_VERSION}
     build: 
       context: ./client
       dockerfile: Dockerfile
