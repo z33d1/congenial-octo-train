@@ -38,7 +38,7 @@ export default {
 					login: this.username,
 					password: this.password,
             }
-            const path = window.location.hostname + ':' + process.env.VUE_APP_AUTH_PORT + `/auth/login`
+            const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_AUTH_PORT + `/auth/login`
 
             axios.post(path, formData)
                 .then((res) => {

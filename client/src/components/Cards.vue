@@ -83,7 +83,8 @@ export default {
             this.pageOfItems = pageOfItems;
     },
     getCards() {
-      const path = window.location.hostname + ':' + process.env.VUE_APP_CARDS_PORT + '/card';
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_CARDS_PORT + '/card';
+      console.log(path)
       axios.get(path)
         .then((res) => {
           this.cards = res.data.cards;
@@ -98,7 +99,7 @@ export default {
     },
    
     removeCard(cardID) {
-      const path = window.location.hostname + ':' + process.env.VUE_APP_CARDS_PORT + `/card/${cardID}`;
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_CARDS_PORT + `/card/${cardID}`;
       axios.delete(path)
         .then(() => {
           this.message = 'Card removed!';
