@@ -1,4 +1,4 @@
-name: Build and Publish
+name: Test Build Push Up
 
 on:
   # run it on push to the default repository branch
@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 jobs:
-  on_build_actions:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -29,6 +29,7 @@ jobs:
           cd cards_service
           python -m unittest test/test_*.py
   docker-build-push-up:
+    needs: test
     timeout-minutes: 10
     runs-on: ubuntu-latest
 
@@ -51,3 +52,18 @@ jobs:
     - name: Stop containers
       if: always()
       run: docker-compose -f "docker-compose.yml" down
+
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PASSWORD }}
+        port: 22
+        script: whoami
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    
