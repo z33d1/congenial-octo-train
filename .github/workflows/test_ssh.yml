@@ -22,4 +22,4 @@ jobs:
             whoami
             ls -al
             cd congenial-octo-train
-            docker-compose -f docker-compose-prd.yml up --force-recreate 
+            docker-compose -f docker-compose-prd.yml up -d --force-recreate 
