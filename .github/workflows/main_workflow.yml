@@ -9,6 +9,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate almost random string
+        run: echo FOO=foobar--$(date +%s) >> $GITHUB_ENV
+      - name: other step that needs FOO
+        run: echo ${{ env.FOO }}
       - uses: actions/checkout@v2
       - name: Install Python 3
         uses: actions/setup-python@v1
