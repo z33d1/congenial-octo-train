@@ -29,4 +29,4 @@ services:
   client:
     image: zeed951/client:${DOCKER_VERSION}
     ports:
-      - 7777:80
+      - 80:80
