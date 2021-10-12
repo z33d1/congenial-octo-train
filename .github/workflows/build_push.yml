@@ -23,6 +23,9 @@ jobs:
     - name: Build images
       run: docker-compose -f "docker-compose.yml" build
 
+    - name: Push images
+      run: docker-compose push
+
     - name: Stop containers
       if: always()
       run: docker-compose -f "docker-compose.yml" down
