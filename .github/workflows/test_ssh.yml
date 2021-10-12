@@ -21,3 +21,5 @@ jobs:
           script: |
             whoami
             ls -al
+            cd congenial-octo-train
+            sudo docker-compose -f docker-compose-prd.yml up --force-recreate 
