@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  card:
+    image: zeed951/card_service:dcomp
+    ports:
+      - 8081:1001   
+  
+  user:
+    image: zeed951/user_service:dcomp
+    ports:
+      - 8082:1002
+
+  order:
+    image: zeed951/order_service:dcomp
+    ports:
+      - 8083:1003
+
+  gateway:
+    image: zeed951/gw_service:dcomp
+    ports:
+      - 8084:8080
+  
+  auth:
+    image: zeed951/auth:dcomp
+    ports:
+      - 8085:1004
+
+  client:
+    image: zeed951/client:dcomp
+    ports:
+      - 8080:80
