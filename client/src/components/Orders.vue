@@ -110,7 +110,7 @@ export default {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       };
       
-      const path = window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user/' + this.user_id + '/order';
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user/' + this.user_id + '/order';
       axios.get(path, config)
         .then((res) => {
           this.orders = res.data.orders;
@@ -126,7 +126,7 @@ export default {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       };
       
-      const path = window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user/' + this.user_id + '/order';
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user/' + this.user_id + '/order';
       axios.post(path, payload, config)
         .then((res) => {
             this.message = 'Order added!';
@@ -162,7 +162,7 @@ export default {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       };
       
-      const path = window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user/' + this.user_id + '/order/' + orderID;
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/user/' + this.user_id + '/order/' + orderID;
       axios.delete(path, config)
         .then(() => {
             this.message = 'Order removed!';

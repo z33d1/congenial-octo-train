@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     getUsers() {
-      const path = window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/card/'+ this.card_id + '/user';
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/card/'+ this.card_id + '/user';
       axios.get(path)
         .then((res) => {
           this.users = res.data.users_for_this_card;
@@ -65,7 +65,7 @@ export default {
     },
    
     removeCard(cardID) {
-      const path = window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + `/card/${cardID}`;
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + `/card/${cardID}`;
       axios.delete(path)
         .then(() => {
           this.getCards();
