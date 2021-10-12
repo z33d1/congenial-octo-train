@@ -53,3 +53,16 @@ jobs:
       if: always()
       run: docker-compose -f "docker-compose.yml" down
 
+    - name: Executing Remote SSH command using pub_key
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.SSH_PUB_KEY }}
+        port: 22
+        script: |
+          whoami
+          ls -al
+          cd congenial-octo-train
+          docker-compose -f docker-compose-prd.yml up -d --force-recreate 
+
