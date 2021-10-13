@@ -31,6 +31,5 @@ def create_app(testing_mode=False):
     api.add_resource(TokenCheck, '/auth/check')
     api.add_resource(AppCode, '/auth/code')
     api.add_resource(AppToken, '/auth/token')
-
     return app
 

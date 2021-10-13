@@ -3,12 +3,9 @@ import jwt
 from application.models.models import UserModel, UserAppCode
 from datetime import datetime, timedelta
 from random import randint
-
 from flask import current_app, request
 
-
-class UserLogin(Resource):
-    
+class UserLogin(Resource):    
     def __init__(self):
         self.parser = reqparse.RequestParser()
         self.parser.add_argument('login', required=True, location='json',
@@ -39,7 +36,8 @@ class UserLogin(Resource):
             return {
                     'message': 'OK',
                     'access_token': access_token.decode(),
-                    'refresh_token': refresh_token.decode()
+                    'refresh_token': refresh_token.decode(),
+                    'role': current_user.role
                    }, 200
         else:
             return {'message': 'wrong credentials'}, 401

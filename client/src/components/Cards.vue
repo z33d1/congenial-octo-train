@@ -4,7 +4,9 @@
       <div class="col-sm-10">        
         <div style="position:absolute; right:0;">
           <router-link to="/auth" tag="button">Login</router-link>
+          <button type="submit" @click.prevent="logOut()" class="btn btn-primary">LogOut</button>
         </div>
+        
         <h2>Cards</h2>
         <hr>
         <div>
@@ -79,11 +81,19 @@ export default {
     alert: Alert,
   },
   methods: {
+    logOut(){
+      localStorage.setItem('token', "");
+      localStorage.setItem('refresh_token', "");
+      localStorage.setItem('role', "");
+      
+      const path = '/';
+      this.$router.push(path)
+    },
     onChangePage(pageOfItems) {
             this.pageOfItems = pageOfItems;
     },
     getCards() {
-      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_CARDS_PORT + '/card';
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + '/card';
       console.log(path)
       axios.get(path)
         .then((res) => {
@@ -99,8 +109,15 @@ export default {
     },
    
     removeCard(cardID) {
-      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_CARDS_PORT + `/card/${cardID}`;
-      axios.delete(path)
+      const path = window.location.protocol + "//" + window.location.hostname + ':' + process.env.VUE_APP_GW_PORT + `/card/${cardID}`;
+
+      if (localStorage.role != 'admin') {
+        this.errorMessage = "Access denied.";
+        this.showErrorMessage = true;
+        console.error(error);
+      }
+      else {
+        axios.delete(path)
         .then(() => {
           this.message = 'Card removed!';
           this.showMessage = true;
@@ -112,6 +129,7 @@ export default {
           this.showErrorMessage = true;
           console.error(error);
         });
+      }      
     },
 
     onDeleteCard(card) {
@@ -126,7 +144,6 @@ export default {
 },
   created() {
     this.getCards();
-    localStorage.setItem('token', "card_zh");
   },
 };
 </script>

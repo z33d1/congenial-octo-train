@@ -99,6 +99,7 @@ export default {
       logOut(){
           localStorage.setItem('token', "");
           localStorage.setItem('refresh_token', "");
+          localStorage.setItem('role', "");
           
           const path = '/';
           this.$router.push(path)

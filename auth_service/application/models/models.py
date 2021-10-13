@@ -8,6 +8,7 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
+    role = db.Column(db.String(50), default='default_user')
 
     @staticmethod
     def find_by_login(login):

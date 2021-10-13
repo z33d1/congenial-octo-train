@@ -6,7 +6,9 @@ def setup_auth_db():
     db.create_all()
 
     db.session.add(UserModel(login="dkiz",
-                             password=UserModel.generate_hash('qwerty')))
+                             password=UserModel.generate_hash('qwerty'),
+                             role='admin'
+                             ))
     db.session.add(UserModel(login="dkiz2",
                              password=UserModel.generate_hash('qwerty2')))
     db.session.commit()
