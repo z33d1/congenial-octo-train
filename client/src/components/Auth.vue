@@ -26,6 +26,8 @@
 <script>
 import axios from 'axios';
 import jwt_decode from '../../node_modules/jwt-decode';
+import Alert from './Alert.vue';
+
 
 export default {
     data() {
@@ -36,6 +38,9 @@ export default {
             user_id: '',
         }
 	},
+    components: {
+        alert: Alert,
+    },
     methods: {
         onSubmit(username, password){
             let formData = {
