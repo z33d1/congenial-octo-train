@@ -52,7 +52,6 @@ class Card(Resource):
         :param card_id: id of record which need to delete
         :return: (response data in json, response status code)
         """
-        #TODO when delete card with it deleting orders on this card
         current_app.logger.info("GET: {}".format(request.full_path))
 
         connector = CardConnector(addr, 'CARD')
